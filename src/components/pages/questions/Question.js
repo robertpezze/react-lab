@@ -21,6 +21,7 @@ export default function Question(props) {
         <div>
 
             <h2>{question.text}</h2>
+
             {!question.options &&
             <TextInput options={question.options} value={answers[questionIndex]} setValue={submitAnswer}/>}
             {question.options &&

@@ -14,7 +14,7 @@ export default function Result(props) {
 
     const {questions, answers} = React.useContext(AppContext);
 
-    questions.map((question, index) => {
+    questions.forEach((question, index) => {
 
         //If no answers, go back to start
         if (answers[index] === undefined) {

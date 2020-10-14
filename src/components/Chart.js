@@ -12,8 +12,25 @@ export default function Chart(props) {
 
     //Run google charts when lib has loaded
     useEffect(() => {
-        GoogleCharts.load(renderChart);
-    }, []);
+
+        GoogleCharts.load(() => {
+
+            let data    = GoogleCharts.api.visualization.arrayToDataTable(props.data);
+            let options = {
+                title:  'This is your score',
+                width:  600,
+                height: 200,
+                bar:    {groupWidth: '95%'},
+                legend: {position: 'none'},
+            };
+
+            let chart = new GoogleCharts.api.visualization.ColumnChart(DOMObject.current);
+
+            chart.draw(data, options);
+
+        });
+
+    }, [props.data]);
 
 
     const DOMObject = useRef();
@@ -22,22 +39,4 @@ export default function Chart(props) {
         <div ref={DOMObject} className="chart"/>
     );
 
-    /**
-     * Render the chart in div
-     */
-    function renderChart() {
-
-        let data    = GoogleCharts.api.visualization.arrayToDataTable(props.data);
-        let options = {
-            title:  'This is your score',
-            width:  600,
-            height: 200,
-            bar:    {groupWidth: '95%'},
-            legend: {position: 'none'},
-        };
-
-        let chart = new GoogleCharts.api.visualization.ColumnChart(DOMObject.current);
-
-        chart.draw(data, options);
-    }
 }

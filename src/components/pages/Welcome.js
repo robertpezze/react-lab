@@ -12,11 +12,11 @@ export default function Welcome() {
     return (
         <div className="welcome">
             <img src={logo} alt="Thinking..."/>
-            <h1>Vem är du?</h1>
-            <p>Obs! Detta är ett icke vetenskapligt test och baseras därför varken på vetenskap eller fakta.</p>
+            <h1>Who are you?</h1>
+            <p>Obs! This test is not in any way based on science. It will give you dummy-results.</p>
 
             <Link to="/test/0">
-                <button value="Test">Starta Testet</button>
+                <button value="Test">Start The Test</button>
             </Link>
         </div>
     );
